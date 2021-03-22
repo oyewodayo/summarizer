@@ -1,7 +1,13 @@
 import tkinter as tk
+from tkinter import *
 import nltk
 from textblob import TextBlob
 from newspaper import Article
+from tkinter import font
+
+def click(event):
+    webbrowser.open('www.baidu.com')
+
 
 def summarize():
     url = utext.get('1.0','end').strip()
@@ -56,6 +62,7 @@ def summarize():
 
 root = tk.Tk()
 root.title("New Summarizer")
+root.iconbitmap('C:/Users/HP/Desktop/python/summarizer/summary.ico')
 root.geometry("1200x600")
 
 tlabel = tk.Label(root, text="Title")
@@ -111,5 +118,10 @@ utext.pack()
 btn = tk.Button(root, text="Summarize", command=summarize)
 btn.pack()
 
+
+# Add Status Bar To Bottom of Editor
+status_bar = Label(root, text='© Temidayo.  ',  anchor=E)
+status_bar.pack(fill=X, side=BOTTOM, ipady=5)
+status_bar.bind("link",  '<Button-1>',click)
 
 root.mainloop()
